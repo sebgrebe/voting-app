@@ -12,10 +12,6 @@ var checkVote = require('../modules/checkvote');
 
 module.exports = function(app,passport) {
 
-app.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
 //CHECK AUTHENTICATED
 app.get('/api/authenticated', function(req,res,next){
   if (req.isAuthenticated()) {
