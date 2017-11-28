@@ -25,8 +25,11 @@ app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()) // handle json data
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(flash())
-app.use(express.static('src/views'))
 
+//Express only serves static assets in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('frontend/build'));
+}
 // required for passport
 app.use(session({
 	secret: 'mySecretKey',
