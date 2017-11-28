@@ -58,7 +58,7 @@ app.post('/api/signup', function(req, res, next) {
 });
 
 //GET SPECIFIC POLL
-app.get('/api/polls?', function(req, res) {
+app.get('/api/polls', function(req, res) {
   var poll_id = req.query.poll_id
   getPoll(poll_id,function(poll){
     console.log("poll: "+poll)
