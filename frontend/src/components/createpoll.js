@@ -8,10 +8,7 @@ class CreatePoll extends Component {
 			poll: {
 				question: '',
 				options: ['',''],
-				votes: {
-					0: 0,
-					1: 0
-				}
+				votes: [0,0]
 			},
 			response: false,
 			response_obj: null,
