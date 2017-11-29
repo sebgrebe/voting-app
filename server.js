@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var passport = require('passport')
 var flash = require('connect-flash')
 var cors = require('cors')
+var path = require('path')
 var request = require('request')
 
 var morgan = require('morgan');
@@ -30,6 +31,11 @@ app.use(flash())
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('frontend/build'));
 }
+
+//configuring server to handle real URLs. See https://github.com/ReactTraining/react-router/blob/v3/docs/guides/Histories.md#browserhistory
+app.get('/polls/*', function (req, res){
+  res.sendFile(path.resolve(__dirname, 'frontend/build', 'index.html'))
+})
 // required for passport
 app.use(session({
 	secret: 'mySecretKey',

@@ -19,6 +19,7 @@ class Home extends Component {
        			xhr.withCredentials = true;
     		},
 			success: (res) => {
+				console.log(res)
 				this.setState({
 					polls: res
 				})
