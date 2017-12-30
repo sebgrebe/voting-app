@@ -1,3 +1,4 @@
+require('dotenv').config()
 var express = require('express');
 var app = express();
 var port = process.env.PORT || 3001;
@@ -56,6 +57,12 @@ app.use(passport.session({
 //To prevent errors from Cross Origin Resource Sharing, we will set 
 //our headers to allow CORS with middleware like so:
 app.use(cors({credentials: true, origin: true}))
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 //-----routes------
 require('./routes/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
